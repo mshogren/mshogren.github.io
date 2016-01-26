@@ -2,3 +2,5 @@ name: Michael Shogren's Blog
 markdown: kramdown
 paginate: 2
 paginate_path: "/page:num/"
+gems:
+  - jekyll-sitemap
