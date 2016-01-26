@@ -5,10 +5,10 @@ layout: feed
 <feed xmlns="http://www.w3.org/2005/Atom">
 
 	<title>Michael Shogren's Blog</title>
-	<link href="http://www.michael-shogren.com/atom.xml" rel="self"/>
-	<link href="http://www.michael-shogren.com"/>
+	<link href="http://michael-shogren.com/atom.xml" rel="self"/>
+	<link href="http://michael-shogren.com"/>
 	<updated>{{ site.time | date_to_xmlschema }}</updated>
-	<id>http://www.michael-shogren.com</id>
+	<id>http://michael-shogren.com</id>
 	<author>
 		<name>Michael Shogren</name>
 	</author>
@@ -16,7 +16,7 @@ layout: feed
 	{% for post in site.posts %}
 		<entry>
 			<title>{{ post.title }}</title>
-			<link href="http://www.michael-shogren.com{{ post.url }}"/>
+			<link href="http://michael-shogren.com{{ post.url }}"/>
 			<updated>{{ post.date | date_to_xmlschema }}</updated>
 			<id>http://www.michael-shogren.com/{{ post.id }}</id>
 			<content type="html">{{ post.content | xml_escape }}</content>
