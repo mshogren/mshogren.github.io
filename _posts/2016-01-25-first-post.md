@@ -8,8 +8,9 @@ Hopefully this is the start of something new that I can also sustain.  I have an
 First a little about me.  I am a lurker on blogs and social media and have been since around 2002 or 2003.  Even before that I ran my own private [Slash](http://www.slashcode.com) blog where I wrote notes on my hobby of configuring [Debian](http://www.debian.org) Potato and Woody systems to dual-boot on my parent's computer.  A move to Canada in 2005 inspired me to attempt to keep in touch with far away friends and family by creating a personal blog. [Procreation of the Wicked](http://web.archive.org/web/20131227112907/http://www.michael-shogren.com/blog/) as it came to be known was a personal blog about adjusting to life in Canada along with some of my thoughts on various popular culture and what might loosely be termed reviews of Metal gigs I went to.  I found that this kind of blogging isn't really my strength.  It isn't about length or the effort required to maintain a blog - I am equally bad at updating statuses on Facebook or tweeting and retweeting anything though I do spend lots of time reading tweets and blogs.
 
 I am inspired to start blogging again not by my desire to communicate personal details about my life but more by an interest in emulating some bloggers I admire.  First among these is [Scott Hanselman](http://www.hanselman.com/blog).  In particular my blogging is inspired by a couple of his posts:
-- [Your blog is the engine of your community](http://www.hanselman.com/blog/YourBlogIsTheEngineOfCommunity.aspx)
-- [You words are wasted](http://www.hanselman.com/blog/YourWordsAreWasted.aspx)
+
+-  [Your blog is the engine of your community](http://www.hanselman.com/blog/YourBlogIsTheEngineOfCommunity.aspx)
+-  [Your words are wasted](http://www.hanselman.com/blog/YourWordsAreWasted.aspx)
 
 Those posts make an argument I find compelling for blogging over, for example, retweeting links I find interesting or links that help me fulfill my ultimate goal, which is to develop an idea into working software.  The extra comments I add to those links and the reasons I give for supporting the ideas of one post over another are the reason I am doing this, and that cannot be done effectively in 140 characters.  I also agree with arguments about the open web and the ability to link to blog posts, and the importance of owning my content.
 
