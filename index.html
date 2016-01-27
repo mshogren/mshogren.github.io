@@ -16,12 +16,14 @@ title: Michael Shogren's Blog
 {% endfor %}
 
 <!-- Pagination links -->
-<div class="pagination">
-  {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path }}" class="previous">Previous</a>
-  {% endif %}
-  <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
-  {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path }}" class="next">Next</a>
-  {% endif %}
-</div>
+<nav>
+  <ul class="pager">
+    {% if paginator.previous_page %}
+      <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
+    {% endif %}
+    {% if paginator.next_page %}
+      <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+    {% endif %}
+  </ul>
+</nav>
+
