@@ -18,10 +18,10 @@ title: Michael Shogren's Blog
 <!-- Pagination links -->
 <nav>
   <ul class="pager">
-    {% if paginator.previous_page %}
+    {% if paginator.next_page %}
       <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
     {% endif %}
-    {% if paginator.next_page %}
+    {% if paginator.previous_page %}
       <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
     {% endif %}
   </ul>
