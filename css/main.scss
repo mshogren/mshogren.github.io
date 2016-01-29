@@ -1,6 +1,12 @@
 ---
 ---
 
-body { padding-top: 70px; }
+body { 
+  padding-top: 70px; 
+}
 
-img { @extend .img-responsive; }
+img { 
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
