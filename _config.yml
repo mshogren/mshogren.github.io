@@ -4,5 +4,6 @@ markdown: kramdown
 paginate: 2
 paginate_path: "/page:num/"
 gems:
+  - jekyll-paginate
   - jekyll-feed
   - jekyll-sitemap
