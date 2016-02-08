@@ -6,13 +6,13 @@ date: 2016-02-08
  This is the second part in a series of posts about provisioning a development environment for the ALSL project.  The complete list of posts in the series are
 
 - [Part 1 - Getting started with Amazon Web Services Elastic Compute Cloud](/2016/02/04/bootstrapping-the-development-environment-1.html)
-- [Part 2 - Securing the development infrastructure](/2016/02/05/bootstrapping-the-development-environment-2.html)
+- [Part 2 - Securing the development infrastructure](/2016/02/08/bootstrapping-the-development-environment-2.html)
 
 In the [first post in this series](/2016/02/04/bootstrapping-the-development-environment-1.html) I outlined the first steps I took to create an AWS EC2 virtual machine instance and access it via ssh.
 
 Next I want create another user and grant it the least privilege it needs in order to launch a new virtual machine from the command line.  This will enable me to ensure that the only access keys I have to keep my local machine will only be able to start a new VM.  This should prevent any issues with someone else using my machine to use other AWS services.  So once I am done this step should delete the access keys for my admin user from the IAM console.
     
-The full script for creating this limited-access user is in the [alsl-infrastructure](https://github.com/mshogren/alsl-infrastructure) repo in the [`aws/setup-iam-roles.sh`](https://github.com/mshogren/alsl-infrastructure/aws/setup-iam-roles.sh) shell script.  In the future I might write a versions of some of these scripts in PowerShell for Windows use.  This is what I started with:
+The full script for creating this limited-access user is in the [alsl-infrastructure](https://github.com/mshogren/alsl-infrastructure) repo in the [`aws/setup-iam-roles.sh`](https://github.com/mshogren/alsl-infrastructure/blob/master/aws/setup-iam-roles.sh) shell script.  In the future I might write a versions of some of these scripts in PowerShell for Windows use.  This is what I started with:
 
 ``` bash
 #!/bin/bash
@@ -35,7 +35,7 @@ rm tmp.json
 
 Its not very clever and could use another variable to make it easier to keep up to date.  The good thing about it (like the script for setting up the security group) is that it is idempotent.  I can run it over and over again and I keep getting the same user with the same policy attached to it.  I never delete the user because then I would have to regenerate access keys and reconfigure my local environment.
 
-The IAM policy (see [`aws/alsl-ec2-launch-policy.json`](https://github.com/mshogren/alsl-infrastructure/aws/alsl-ec2-launch-policy.json)) that is created and attached to the user by this script is just about as limited as I can make it.  The user can create only small or micro EC2 instances, and those instances may only use the security group I have defined and only do anything at all in one particular region.
+The IAM policy (see [`aws/alsl-ec2-launch-policy.json`](https://github.com/mshogren/alsl-infrastructure/blob/master/aws/alsl-ec2-launch-policy.json)) that is created and attached to the user by this script is just about as limited as I can make it.  The user can create only small or micro EC2 instances, and those instances may only use the security group I have defined and only do anything at all in one particular region.
 
 Once that script is done once I need to setup the command line tools again for the restricted user and configure them for that new user's access keys:
     

@@ -1,8 +1,12 @@
 name: Michael Shogren's Blog
 author: Michael Shogren
 markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 paginate: 2
 paginate_path: "/page:num/"
 gems:
+  - jekyll-paginate
   - jekyll-feed
   - jekyll-sitemap
