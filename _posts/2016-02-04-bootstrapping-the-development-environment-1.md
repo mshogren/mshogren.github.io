@@ -4,7 +4,10 @@ title: "Bootstrapping the development environment - part 1"
 date: 2016-02-04
 ---
 
-As I wrote this I discovered that this was going to be too much for one post so there will be a short series.  This is the first part.
+As I wrote this I discovered that this was going to be too much for one post so there will be a short series.  This is the first part.  The complete list of posts in the series are
+
+- [Part 1 - Getting started with Amazon Web Services Elastic Compute Cloud](/2016/02/04/bootstrapping-the-development-environment-1.html)
+- [Part 2 - Securing the development infrastructure](/2016/02/08/bootstrapping-the-development-environment-2.html)
 
 One of the tenets of continuous delivery is to always automate, and that includes automating the creation of one of the first things anyone working on the ALSL project will need, a development environment.  There is an obvious bootstrapping problem here, in that to setup anything in an automated way I need a first environment from which to create others.  Ideally this initial environment can be ignored after the bootstrapping process is done.  In my case the initial environment is an HTPC I bought over 6 years ago that is running Debian Stretch.  I can remote to that computer over SSH from a couple of Android devices I have including a tablet with a bluetooth keyboard.  Alternatively I can plug a keyboard directly into that HTPC and use the TV as a monitor.  The point I am trying to make is that ALSL is not investing in new hardware right now.  
 
@@ -30,17 +33,13 @@ In order to access any virtual machine I create in [AWS Elastic Compute Cloud (E
 
 I am almost ready to start a new instance of a virtual machine but there is one thing left to do.  Each EC2 VM instance must have a [security group](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html) that acts as a set of firewall rules controlling access to the virtual machine.  I am going to allow SSH access only from my IP address using the following script:
 
-```bash
+``` bash
 IP=$(curl http://checkip.amazonaws.com);
 
 aws ec2 create-security-group --group-name alsl-ec2-dev-sg --description "Security group for developer instances"
-
 aws ec2 describe-security-groups --group-names alsl-ec2-dev-sg --query SecurityGroups[0].IpPermissions > tmp.json
-
 aws ec2 revoke-security-group-ingress --group-name alsl-ec2-dev-sg --ip-permissions file://tmp.json
-
 rm tmp.json
-
 aws ec2 authorize-security-group-ingress --group-name alsl-ec2-dev-sg --protocol tcp --port 22 --cidr $IP/32
 ```
 
@@ -48,10 +47,10 @@ I have made the script idempotent, that is running it over and over again has th
 
 Finally I can add one more command to the script to actually launch a new instance
 
-```bash
+``` bash
 aws ec2 run-instances --image-id ami-9abea4fb --key-name $USER --security-groups alsl-ec2-dev-sg --instance-type t2.micro 
 ```
-The full script is [aws/launch-devenv.sh](https://github.com/mshogren/alsl-infrastructure/blob/master/aws/launch-devenv.sh)
+The full script is [`aws/launch-devenv.sh`](https://github.com/mshogren/alsl-infrastructure/blob/master/aws/launch-devenv.sh)
 
 When I run it I can test that I can connect to it
 
