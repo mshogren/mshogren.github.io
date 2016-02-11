@@ -8,6 +8,7 @@ As I wrote this I discovered that this was going to be too much for one post so 
 
 - [Part 1 - Getting started with Amazon Web Services Elastic Compute Cloud](/2016/02/04/bootstrapping-the-development-environment-1.html)
 - [Part 2 - Securing the development infrastructure](/2016/02/08/bootstrapping-the-development-environment-2.html)
+- [Part 3 - Configuring the development environment](/2016/02/10/bootstrapping-the-development-environment-3.html)
 
 One of the tenets of continuous delivery is to always automate, and that includes automating the creation of one of the first things anyone working on the ALSL project will need, a development environment.  There is an obvious bootstrapping problem here, in that to setup anything in an automated way I need a first environment from which to create others.  Ideally this initial environment can be ignored after the bootstrapping process is done.  In my case the initial environment is an HTPC I bought over 6 years ago that is running Debian Stretch.  I can remote to that computer over SSH from a couple of Android devices I have including a tablet with a bluetooth keyboard.  Alternatively I can plug a keyboard directly into that HTPC and use the TV as a monitor.  The point I am trying to make is that ALSL is not investing in new hardware right now.  
 

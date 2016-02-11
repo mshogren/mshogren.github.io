@@ -7,6 +7,7 @@ date: 2016-02-08
 
 - [Part 1 - Getting started with Amazon Web Services Elastic Compute Cloud](/2016/02/04/bootstrapping-the-development-environment-1.html)
 - [Part 2 - Securing the development infrastructure](/2016/02/08/bootstrapping-the-development-environment-2.html)
+- [Part 3 - Configuring the development environment](/2016/02/10/bootstrapping-the-development-environment-3.html)
 
 In the [first post in this series](/2016/02/04/bootstrapping-the-development-environment-1.html) I outlined the first steps I took to create an AWS EC2 virtual machine instance and access it via ssh.
 
@@ -49,9 +50,11 @@ At this point I have a user that can use command line scripts to launch a new EC
 ``` bash
 aws iam create-role --role-name alsl-ec2-dev --assume-role-policy-document file://ec2-assume-role-policy.json
 aws iam attach-role-policy --role-name alsl-ec2-dev --policy-arn arn:aws:iam::aws:policy/AmazonEC2FullAccess
+aws iam create-instance-profile --instance-profile-name alsl-ec2-dev
+aws iam add-role-to-instance-profile --instance-profile-name alsl-ec2-dev --role-name alsl-ec2-dev
 ```
 
 For now I have no particular policy in mind that needs to be passed to the EC2 instance, so I will pass the predefined `AmazonEC2FullAccess` policy.  Here it is important to note that the EC2 instance will now have more access to EC2 instances than the launch policy initially gave.  This is the first step towards securing my AWS resources from the outside world by creating a [bastion host](https://en.wikipedia.org/wiki/Bastion_host) that can only be accessed from certain IP addresses and only by using my private SSH key, which in turn provides all other private access to any of my other resources.
 
-Another task that I should complete is to write some automated tests for my custom policy using the [AWS IAM Policy Simulator](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html)  Finally for a case where you need a machine with access for multiple users it might be cool to do the provisioning with [AWS Opsworks](https://aws.amazon.com/opsworks/) since that will [create all AWS OpsWorks users that have an SSH public key on each machine](http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html).  The downside is you get a machine with [Chef](https://www.chef.io) on it which I don't really want.  It may instead be possible to script something that creates new users based on a list of key pairs.  That kind of work scripting how the instance is configured once it starts up is the topic of the next post in this series.
+Another task that I should complete is to write some automated tests for my custom policy using the [AWS IAM Policy Simulator](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html)  Finally I might want to deal with the issue of having multiple users able to use ssh to access a server with their own private keys.  Currently I access the instances launched by logging in as a predefined account such as `ubuntu`, and that is the only user that is configured on the instance.  For a case where you need a machine with access for multiple users it might be cool to do the provisioning with [AWS Opsworks](https://aws.amazon.com/opsworks/) since that will [create all AWS OpsWorks users that have an SSH public key on each machine](http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html).  The downside is you get a machine with [Chef](https://www.chef.io) on it which I don't really want.  It may instead be possible to script something that creates new users based on a list of key pairs.  That kind of work scripting how the instance is configured once it starts up is the topic of the next post in this series.
 
