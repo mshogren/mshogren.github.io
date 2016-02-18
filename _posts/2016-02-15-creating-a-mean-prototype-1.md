@@ -3,6 +3,10 @@ layout: post
 title: "Creating a MEAN prototype - part 1"
 date: 2016-02-15
 ---
+This is the second part in a series of posts about building a prototype for the ALSL project.  The complete list of posts in the series are
+
+- [Part 1 - Introduction to MEAN prototypes](/2016/02/15/creating-a-mean-prototype-1.html)
+- [Part 2 - Creating a prototype using yeoman](/2016/02/18/creating-a-mean-prototype-1.html)
 
 Once I had finished figuring out how I would provision environments using Ansible and build and test software using Snap-CI as I have over my last few posts, I thought the next step I would take would be to do a small part of the work that needs to be done for the ALSL project - that is design an API.  This seemed like a reasonable first step since the API defines the interface between our users and the system.  I was all ready to get into talking about [Domain Driven Design](http://domainlanguage.com/ddd/), and I had started looking at ways to define the API in a technology agnostic language such as [RAML](http://raml.org/) when I started talking to a friend about a project he wanted to do.  He mentioned the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)) as a possible way to quickly create working software, which is a great way to validate any API design.  I got to thinking and reading articles like <a href="https://addyosmani.com/blog/full-stack-javascript-with-mean-and-yeoman/" data-proofer-ignore>this one</a> by Addy Osmani, and decided that building a quick prototype using [mean.io](http://mean.io) or [yeoman](http://yeoman.io) sounded like a great idea.  
 
