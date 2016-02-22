@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Creating a MEAN prototype - part 3"
-date: 2016-02-19
+date: 2016-02-22
 ---
 This is the fourth part in a series of posts about building a prototype for the ALSL project.  The complete list of posts in the series are
 
