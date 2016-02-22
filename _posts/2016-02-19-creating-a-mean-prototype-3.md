@@ -8,13 +8,14 @@ This is the third part in a series of posts about building a prototype for the A
 - [Part 1 - Introduction to MEAN prototypes](/2016/02/15/creating-a-mean-prototype-1.html)
 - [Part 2 - Creating a prototype using yeoman](/2016/02/18/creating-a-mean-prototype-2.html)
 - [Part 3 - Testing the prototype](/2016/02/19/creating-a-mean-prototype-3.html)
+- [Part 4 - Building and deploying the prototype](/2016/02/22/creating-a-mean-prototype-4.html)
 
 In the [first post in this series](/2016/02/15/creating-a-mean-prototype-1.html) discussed the some of the reasons for building a prototype, and introduced the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)).
 Then in the [second post](/2016/02/18/creating-a-mean-prototype-2.html) I covered what I found when I tried to follow [this guide](http://docs.stormpath.com/angularjs/guide/) to build a MEAN prototype that is integrated with the StormPath user management service I have decided to use. The guide uses [yeoman](http://yeoman.io) and in particular the [angular-fullstack-generator](https://github.com/angular-fullstack/generator-angular-fullstack), to quickly create a working app by generating a lot of boilerplate code.
 
 By the end of that post I had managed to get the `grunt build` task to successfully run and was ready to try the `grunt test` task.  I ran problems with `grunt test` so I started trying to run `grunt test:server` and `grunt test:client` separately to help me solve the problems.
 
-The figured the server side test in [`thing.spec.js`](https://github.com/mshogren/alsl-sandbox1/blob/master/server/api/thing/thing.spec.js) needed to be changed to wait for the StormPath initialization to finish before testing so I tried adding:
+I figured the server side test in [`thing.spec.js`](https://github.com/mshogren/alsl-sandbox1/blob/master/server/api/thing/thing.spec.js) needed to be changed to wait for the StormPath initialization to finish before testing so I tried adding:
 
 ``` javascript
 before(function(done) {
@@ -70,6 +71,7 @@ describe('GET /api/things', function() {
 ```
 
 For the client-side testing I needed a couple more packages as shown below
+
 ```
 npm install grunt-node-inspector@latest --save-dev
 npm install karma-phantomjs-launcher@latest --save-dev
