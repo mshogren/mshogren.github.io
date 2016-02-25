@@ -10,13 +10,14 @@ This is the fifth part in a series of posts about building a prototype for the A
 - [Part 3 - Testing the prototype](/2016/02/19/creating-a-mean-prototype-3.html)
 - [Part 4 - Building and deploying the prototype](/2016/02/22/creating-a-mean-prototype-4.html)
 - [Part 5 - Preparing to extend the prototype](/2016/02/25/creating-a-mean-prototype-5.html)
+- [Part 6 - Extending the prototype](/2016/02/28/creating-a-mean-prototype-6.html)
 
 In the previous posts in this series I discussed the some of the reasons for building a prototype, and introduced the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)).
 I covered what I found when I tried to follow [this guide](http://docs.stormpath.com/angularjs/guide/) to build a MEAN prototype that is integrated with the [StormPath](https://stormpath.com) user management service I have decided to use, but there were some tweaks I needed to make along the way, especially in order to get the tests working.  In the [most recent post](/2016/02/22/creating-a-mean-prototype-4.html) I built a deployment pipeline for the prototype.
 
 I thought this would be the final post in the series, where I finally got around to adding at least another form to the application.  As I was thinking about what need to be done I discovered that there was too much little stuff to be resolved, including the [technical debt](http://martinfowler.com/bliki/TechnicalDebt.html) incurred by using a yeoman generator.  I managed to clean up a lot of things working on this post which should make delivering new features to the deployed prototype faster in the future.
 
-The first thing I did was configure social login from Facebook or Google using [this](https://docs.stormpath.com/nodejs/express/latest/social_login.html) as a guide.  Things worked relatively well, but I discovered a minor issue with the default [login page html template](https://github.com/stormpath/stormpath-sdk-angularjs/blob/master/src/spLoginForm.tpl.html) from the [Stormpath Angular JS SDK](http://docs.stormpath.com/angularjs/sdk), so I created and called my own modified template.  You can have a look at what I did in these two commits:
+The first thing I did was configure social login from Facebook or Google using [this](https://docs.stormpath.com/nodejs/express/latest/social_login.html) as a guide.  Things worked relatively well, but I discovered a minor issue with the default [login page html template](https://github.com/stormpath/stormpath-sdk-angularjs/blob/master/src/spLoginForm.tpl.html) from the [Stormpath Angular JS SDK](http://docs.stormpath.com/angularjs/sdk/#/api), so I created and called my own modified template.  You can have a look at what I did in these two commits:
 
 - [Fixing social login html template](https://github.com/mshogren/alsl-sandbox1/commit/6c41a57cc72709c0f44881e2d2e0cf58ed48bdc8)
 - [Fix OAuth Scope requested for social login](https://github.com/mshogren/alsl-sandbox1/commit/f59c4b27ae075c232b52d728cf0c97c3d06f76f4)
