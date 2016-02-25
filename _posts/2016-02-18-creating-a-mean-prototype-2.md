@@ -9,6 +9,7 @@ This is the second part in a series of posts about building a prototype for the 
 - [Part 2 - Creating a prototype using yeoman](/2016/02/18/creating-a-mean-prototype-2.html)
 - [Part 3 - Testing the prototype](/2016/02/19/creating-a-mean-prototype-3.html)
 - [Part 4 - Building and deploying the prototype](/2016/02/22/creating-a-mean-prototype-4.html)
+- [Part 5 - Preparing to extend the prototype](/2016/02/25/creating-a-mean-prototype-5.html)
 
 In the [first post in this series](/2016/02/15/creating-a-mean-prototype-1.html) discussed the some of the reasons for building a prototype, and introduced the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)).
 Next I am going to talk about what I found when I tried to follow [this guide](http://docs.stormpath.com/angularjs/guide/) to build a MEAN prototype that is integrated with the StormPath user management service I have decided to use. The guide uses [yeoman](http://yeoman.io) and in particular the [angular-fullstack-generator](https://github.com/angular-fullstack/generator-angular-fullstack), to quickly create a working app by generating a lot of boilerplate code.

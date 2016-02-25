@@ -9,11 +9,12 @@ This is the fourth part in a series of posts about building a prototype for the 
 - [Part 2 - Creating a prototype using yeoman](/2016/02/18/creating-a-mean-prototype-2.html)
 - [Part 3 - Testing the prototype](/2016/02/19/creating-a-mean-prototype-3.html)
 - [Part 4 - Building and deploying the prototype](/2016/02/22/creating-a-mean-prototype-4.html)
+- [Part 5 - Preparing to extend the prototype](/2016/02/25/creating-a-mean-prototype-5.html)
 
 In the previous posts in this series I discussed the some of the reasons for building a prototype, and introduced the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)).
 I covered what I found when I tried to follow [this guide](http://docs.stormpath.com/angularjs/guide/) to build a MEAN prototype that is integrated with the [StormPath](https://stormpath.com) user management service I have decided to use, but there were some tweaks I needed to make along the way, especially in order to get the tests working.
 
-Once the tests were working I decided to build a cvontinuous deployment pipeline in Snap-CI which you can view [here](https://snap-ci.com/mshogren/alsl-sandbox1/branch/master).  The first stages run the `npm install` and `bower install` commands to get dependencies and then various grunt tasks to run tests and build (minify, etc) the project.
+Once the tests were working I decided to build a continuous deployment pipeline in Snap-CI which you can view [here](https://snap-ci.com/mshogren/alsl-sandbox1/branch/master).  The first stages run the `npm install` and `bower install` commands to get dependencies and then various grunt tasks to run tests and build (minify, etc) the project.
 
 The last step runs `grunt buildcontrol` which uses configuration from the [Gruntfile.js](https://github.com/mshogren/alsl-sandbox1/blob/master/Gruntfile.js) to deploy the built project to a new **deploy** branch of my repo.  The configuration I used in my `Gruntfile.js` is:
 
