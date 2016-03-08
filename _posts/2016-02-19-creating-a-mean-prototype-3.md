@@ -10,6 +10,7 @@ This is the third part in a series of posts about building a prototype for the A
 - [Part 3 - Testing the prototype](/2016/02/19/creating-a-mean-prototype-3.html)
 - [Part 4 - Building and deploying the prototype](/2016/02/22/creating-a-mean-prototype-4.html)
 - [Part 5 - Preparing to extend the prototype](/2016/02/25/creating-a-mean-prototype-5.html)
+- [Part 6 - Extending the prototype](/2016/03/08/creating-a-mean-prototype-6.html)
 
 In the [first post in this series](/2016/02/15/creating-a-mean-prototype-1.html) discussed the some of the reasons for building a prototype, and introduced the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)).
 Then in the [second post](/2016/02/18/creating-a-mean-prototype-2.html) I covered what I found when I tried to follow [this guide](http://docs.stormpath.com/angularjs/guide/) to build a MEAN prototype that is integrated with the StormPath user management service I have decided to use. The guide uses [yeoman](http://yeoman.io) and in particular the [angular-fullstack-generator](https://github.com/angular-fullstack/generator-angular-fullstack), to quickly create a working app by generating a lot of boilerplate code.
@@ -84,7 +85,7 @@ and I needed to update my [`karma.conf.js`](https://github.com/mshogren/alsl-san
 'client/bower_components/stormpath-sdk-angularjs/dist/stormpath-sdk-angularjs.js',
 'client/bower_components/stormpath-sdk-angularjs/dist/stormpath-sdk-angularjs.tpls.js',
 ```
-Once that was done there was one still one failing client side test which I fixed by modifying it to meet the expectation that it would GET the `/me` url to check if the user is logged in before making its main request to `/api/things`.  The test is in [`main.controller.spec.js`](https://github.com/mshogren/alsl-sandbox1/blob/master/client/app/main/main.controller.spec.js).  I also had to add an expectation that the html template would be retrieved with a GET too.  I will look into whether or not that is necessary.
+Once that was done there was one still one failing client side test which I fixed by modifying it to meet the expectation that it would GET the `/me` url to check if the user is logged in before making its main request to `/api/things`.  The test is in [`main.controller.spec.js`](https://github.com/mshogren/alsl-sandbox1/blob/e7e8be985fced392bf51ea6064b375bc6e80d467/client/app/main/main.controller.spec.js).  I also had to add an expectation that the html template would be retrieved with a GET too.  I will look into whether or not that is necessary.
 
 Finally I attempted to run the end-to-end ui tests in the browser using `grunt test:e2e`, but I needed to get some dependencies installed first.  To start I had to modify the `scripts` section of my [`package.json`](https://github.com/mshogren/alsl-sandbox1/blob/master/package.json) as follows.
 
