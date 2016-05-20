@@ -24,7 +24,7 @@ The first thing I did was configure social login from Facebook or Google using [
 
 I am considering submitting a pull request to the Stormpath team to get this fixed.  While I was doing these changes I decided it would be easier to switch off the Grunt steps that minify the JavaScript and CSS, so I can use debugging tools even on the deployed application.  I did that by simply commenting out some lines in the [`Gruntfile.js`](https://github.com/mshogren/alsl-sandbox1/blob/master/Gruntfile.js).
 
-Next I modified the registration process to accept a username field.  In my opinion it is a shame that the `sp-registration-form` directive doesn't product a form that displays the fields based on the configuration.  I guess that is another potential pull request I could submit. Anyway, the change I made was done in these two commits:
+Next I modified the registration process to accept a username field.  In my opinion it is a shame that the `sp-registration-form` directive doesn't produce a form that displays the fields based on the configuration.  I guess that is another potential pull request I could submit. Anyway, the change I made was done in these two commits:
 
 - [Add username to registration](https://github.com/mshogren/alsl-sandbox1/commit/b2bc55871c02ff688c5b9ad331a90725d3bb4b79)
 - [Add username to registration form](https://github.com/mshogren/alsl-sandbox1/commit/2cc8cdc82d5129e5ef60bff219d82a340868a94f)
