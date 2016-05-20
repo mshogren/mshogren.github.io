@@ -3,7 +3,7 @@ layout: post
 title: "Creating a MEAN prototype - part 1"
 date: 2016-02-15
 ---
-This is the second part in a series of posts about building a prototype for the ALSL project.  The complete list of posts in the series are
+This is the first part in a series of posts about building a prototype for the ALSL project.  The complete list of posts in the series are
 
 - [Part 1 - Introduction to MEAN prototypes](/2016/02/15/creating-a-mean-prototype-1.html)
 - [Part 2 - Creating a prototype using yeoman](/2016/02/18/creating-a-mean-prototype-2.html)
