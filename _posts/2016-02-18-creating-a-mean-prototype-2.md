@@ -25,7 +25,7 @@ This installs the following command line tools and the generator:
 
 - yo (The yeoman command line tool)
 - [grunt](http://gruntjs.com/) (A JavaScript build tool)
-- [bower](http://bower.io/) (A client side asset management tool)
+- [bower](https://bower.io/) (A client side asset management tool)
 
 As I moved through the guide there were a couple of other deviations I made from the prescribed steps.  For example, in the initial app scaffolding step with yeoman I configured it to use [mongoose](http://mongoosejs.com/) for [MongoDb](https://www.mongodb.com/) database access and to include the [Angular UI Bootstrap](https://angular-ui.github.io/bootstrap/) components so I could give the prototype the same look and feel as my blog if I wanted to.  The database components required a MongoDb installation so I created an Ansible role to mimic the install instructions I found [here](https://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/).  Once I was finished the guide I had everything checked into a new repo at https://github.com/mshogren/alsl-sandbox1.  Note the suffix to denote that this may the first of several prototypes.
 
