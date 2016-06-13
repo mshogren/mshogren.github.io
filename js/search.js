@@ -21,15 +21,15 @@ jQuery(function() {
   });
 
   // Event when the form is submitted
-  $("#search_btn").click(function(event){
+  $("#search-form").submit(function(event){
       event.preventDefault();
-      var query = $("#search_text").val(); // Get the value for the text field
+      var query = $("#search-input").val(); // Get the value for the text field
       var results = window.idx.search(query); // Get lunr to perform a search
       display_search_results(results); // Hand the results off to be displayed
   });
 
   function display_search_results(results) {
-    var $search_results = $("#search_results");
+    var $search_results = $("#search-results");
 
     // Wait for data to load
     window.data.then(function(loaded_data) {
