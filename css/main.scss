@@ -10,3 +10,15 @@ img {
   height: auto;
   display: block;
 }
+
+#search-form {
+  width: 300px; 
+  float: left; 
+  padding-top: 8px;
+}
+
+@media (max-width: 767px) {
+  #search-form {
+    width: 50%;
+  }
+}
