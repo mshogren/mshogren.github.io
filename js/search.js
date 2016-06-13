@@ -1,6 +1,6 @@
 jQuery(function() {
 
-  $(".hasclear").keyup(function () {
+  $(".has-clear").keyup(function () {
     var t = $(this);
     t.next('span').toggle(Boolean(t.val()));
   });
