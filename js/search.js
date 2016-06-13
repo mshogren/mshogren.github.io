@@ -1,7 +1,7 @@
 jQuery(function() {
     $(".has-clear").keyup(function () {
         var t = $(this);
-        t.next('button').toggle(Boolean(t.val()));
+        t.next('span').toggle(Boolean(t.val()));
     });
 
     $(".clearer").hide($(this).prev('input').val());
