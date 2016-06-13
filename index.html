@@ -15,6 +15,7 @@ title: Michael Shogren's Blog
   <div class="content">
     {{ post.content }}
   </div>
+  <a href="{{ post.url }}#disqus_thread"></a>
 {% endfor %}
 
   <!-- Pagination links -->
@@ -34,9 +35,9 @@ title: Michael Shogren's Blog
     <h3>Recent Posts</h3>
     {% for post in site.posts offset: 0 limit: 3  %}
       <div>
-        <a href="{{ post.url }}">{{ post.title }}</a>
+        <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
         <p>{% if post.content contains '<!--excerpt.start-->' and post.content contains '<!--excerpt.end-->' %}{{ ((post.content | split:'<!--excerpt.start-->' | last) | split: '<!--excerpt.end-->' | first) | strip_html | strip_newlines | remove:  "	" | escape | remove: "\" | truncatewords: 50 }}{% else %}{{ post.content | strip_html | strip_newlines | remove:  "	" | escape | remove: "\" | truncatewords: 50 }}{% endif %}</p>
-        <i><a href="{{ post.url }}#disqus_thread"></a><i>
+        <a href="{{ post.url }}#disqus_thread"></a>
       </div>
     {% endfor %}
   </div>
