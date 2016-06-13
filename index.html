@@ -36,7 +36,7 @@ title: Michael Shogren's Blog
       <div>
         <a href="{{ post.url }}">{{ post.title }}</a>
         <p>{% if post.content contains '<!--excerpt.start-->' and post.content contains '<!--excerpt.end-->' %}{{ ((post.content | split:'<!--excerpt.start-->' | last) | split: '<!--excerpt.end-->' | first) | strip_html | strip_newlines | remove:  "	" | escape | remove: "\" | truncatewords: 50 }}{% else %}{{ post.content | strip_html | strip_newlines | remove:  "	" | escape | remove: "\" | truncatewords: 50 }}{% endif %}</p>
-        <a href="{{ post.url }}index.html#disqus_thread" data-disqus-identifier="{{post.url}}"></a>
+        <a href="{{ post.url }}#disqus_thread" data-disqus-identifier="{{post.url}}"></a>
       </div>
     {% endfor %}
   </div>
