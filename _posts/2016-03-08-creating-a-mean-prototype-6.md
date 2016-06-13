@@ -12,12 +12,11 @@ This is the sixth part in a series of posts about building a prototype for the A
 - [Part 5 - Preparing to extend the prototype](/2016/02/25/creating-a-mean-prototype-5.html)
 - [Part 6 - Extending the prototype](/2016/03/08/creating-a-mean-prototype-6.html)
 
-<!--excerpt.start-->
 In the previous posts in this series I discussed the some of the reasons for building a prototype, and introduced the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)).
 I covered what I found when I tried to follow [this guide](http://docs.stormpath.com/angularjs/guide/) to build a MEAN prototype that is integrated with the [StormPath](https://stormpath.com) user management service I have decided to use, but there were some tweaks I needed to make along the way, especially in order to get the tests working.  Now I am ready to start extending the prototype to provide some useful functionality.
-<!--excerpt.end-->
+<!--excerpt.start-->
 This post has been a while coming because I jumped down a couple of rabbit-holes while working on it.  I have concluded that client side stuff is not as bad as it was during the worst days of the [browser wars](https://en.wikipedia.org/wiki/Browser_wars), and I still like angularjs but creating polished rich web applications is still much more difficult than implementing server side business rules.  I will have some future posts about what I found down those rabbit-holes but first I wanted to finish this series.
-
+<!--excerpt.end-->
 The first step I took to extend the application was to create a new route (this creates a ui-router state with a url) using:
 
 ```
