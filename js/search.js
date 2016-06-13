@@ -48,6 +48,8 @@ jQuery(function() {
           // Add the snippet to the collection of results.
           $search_results.append(appendString);
         });
+
+        DISQUSWIDGETS.getCount({reset: true});
       } else {
         // If there are no results, let the user know.
         $search_results.html('<li>No results found.<br/>Please check spelling, spacing, yada...</li>');
