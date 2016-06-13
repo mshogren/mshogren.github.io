@@ -10,9 +10,9 @@ date: 2016-02-08
 - [Part 3 - Configuring the development environment](/2016/02/10/bootstrapping-the-development-environment-3.html)
 
 In the [first post in this series](/2016/02/04/bootstrapping-the-development-environment-1.html) I outlined the first steps I took to create an AWS EC2 virtual machine instance and access it via ssh.
-
+<!--excerpt.start-->
 Next I want create another user and grant it the least privilege it needs in order to launch a new virtual machine from the command line.  This will enable me to ensure that the only access keys I have to keep my local machine will only be able to start a new VM.  This should prevent any issues with someone else using my machine to use other AWS services.  So once I am done this step should delete the access keys for my admin user from the IAM console.
-    
+<!--excerpt.end-->  
 The full script for creating this limited-access user is in the [alsl-infrastructure](https://github.com/mshogren/alsl-infrastructure) repo in the [`aws/setup-iam-roles.sh`](https://github.com/mshogren/alsl-infrastructure/blob/master/aws/setup-iam-roles.sh) shell script.  In the future I might write a versions of some of these scripts in PowerShell for Windows use.  This is what I started with:
 
 ``` bash
