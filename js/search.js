@@ -43,7 +43,7 @@ jQuery(function() {
           var item = loaded_data[result.ref];
 
           // Build a snippet of HTML for this result
-          var appendString = '<li><a href="' + item.url + '">' + item.title + '</a></li>';
+          var appendString = '<h4><a href="' + item.url + '">' + item.title + '</a></h4><p>' + item.excerpt + '</p><a>' + item.url + '#disqus_thread</a>';
 
           // Add the snippet to the collection of results.
           $search_results.append(appendString);
