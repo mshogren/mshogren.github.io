@@ -2,7 +2,7 @@
 layout: default
 title: Michael Shogren's Blog
 ---
-<div class="col-sm-4">
+<div class="col-sm-12 col-md-8">
 <h1>{{ page.title }}</h1>
 
 <!-- This loops through the paginated posts -->
@@ -28,7 +28,7 @@ title: Michael Shogren's Blog
   </ul>
 </nav>
 </div>
-<div class="col-sm-4">
+<div class="col-sm-4 col-md-4">
   <div>
     <h3>Recent Posts</h3>
     {% for post in site.posts offset: 0 limit: 10  %}
