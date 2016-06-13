@@ -1,4 +1,16 @@
 jQuery(function() {
+    $(".hasclear").keyup(function () {
+        var t = $(this);
+        t.next('button').toggle(Boolean(t.val()));
+    });
+
+    $(".clearer").hide($(this).prev('input').val());
+
+    $(".clearer").click(function () {
+        $(this).prev('input').val('').focus();
+        $(this).hide();
+    });
+
   // Initialize lunr with the fields to be searched, plus the boost.
   window.idx = lunr(function () {
     this.field('id');
