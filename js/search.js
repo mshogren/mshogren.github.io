@@ -1,5 +1,5 @@
 jQuery(function() {
-    $(".hasclear").keyup(function () {
+    $(".has-clear").keyup(function () {
         var t = $(this);
         t.next('button').toggle(Boolean(t.val()));
     });
