@@ -1,16 +1,4 @@
-jQuery(function() {
-
-  $(".has-clear").keyup(function () {
-    var t = $(this);
-    t.next('span').toggle(Boolean(t.val()));
-  });
-
-  //$(".clearer").hide($(this).prev('input').val());
-
-  $(".clearer").click(function () {
-    $(this).prev('input').val('').focus();
-    $(this).hide();
-  });
+jQuery(function () {
 
   // Initialize lunr with the fields to be searched, plus the boost.
   window.idx = lunr(function () {
@@ -25,34 +13,52 @@ jQuery(function() {
   window.data = $.getJSON('/search_data.json');
 
   // Wait for the data to load and add it to lunr
-  window.data.then(function(loaded_data){
-    $.each(loaded_data, function(index, value){
+  window.data.then(function (loaded_data) {
+    $.each(loaded_data, function (index, value) {
       window.idx.add(
         $.extend({ "id": index }, value)
       );
     });
   });
 
-  // Event when the form is submitted
-  $("#search-form").submit(function(event){
-      event.preventDefault();
-      var query = $("#search-input").val(); // Get the value for the text field
-      var results = window.idx.search(query); // Get lunr to perform a search
-      display_search_results(results); // Hand the results off to be displayed
+  // Event on keyup in the search field
+  $("#search-input").keyup(function () {
+    var t = $(this);
+    t.next('span').toggle(Boolean(t.val()));
+    search();
   });
+
+  $("#search-clear").hide($(this).prev('input').val());
+
+  $("#search-clear").click(function () {
+    $(this).prev('input').val('').focus();
+    $(this).hide();
+  });
+
+  // Event when the form is submitted
+  $("#search-form").submit(function (event) {
+    event.preventDefault();
+    search();
+  });
+
+  function search() {
+    var query = $("#search-input").val(); // Get the value for the text field
+    var results = window.idx.search(query); // Get lunr to perform a search
+    display_search_results(results); // Hand the results off to be displayed
+  }
 
   function display_search_results(results) {
     var $search_results = $("#search-results");
 
     // Wait for data to load
-    window.data.then(function(loaded_data) {
+    window.data.then(function (loaded_data) {
 
       // Are there any results?
       if (results.length) {
         $search_results.empty(); // Clear any old results
 
         // Iterate over the results
-        results.forEach(function(result) {
+        results.forEach(function (result) {
           var item = loaded_data[result.ref];
 
           // Build a snippet of HTML for this result
@@ -62,7 +68,7 @@ jQuery(function() {
           $search_results.append(appendString);
         });
 
-        DISQUSWIDGETS.getCount({reset: true});
+        DISQUSWIDGETS.getCount({ reset: true });
       } else {
         // If there are no results, let the user know.
         $search_results.html('<li>No results found.<br/>Please check spelling, spacing, yada...</li>');
