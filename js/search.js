@@ -25,6 +25,7 @@ jQuery(function () {
   $("#search-input").keyup(function () {
     var t = $(this);
     $(".search-results").toggle(Boolean(t.val()));
+    $(".main-content").toggle(!Boolean(t.val()));
     search();
   });
 
@@ -48,7 +49,7 @@ jQuery(function () {
   }
 
   function display_search_results(results) {
-    var $search_results = $("div#search-results");
+    var $search_results = $("div.search-results");
 
     // Wait for data to load
     window.data.then(function (loaded_data) {
