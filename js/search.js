@@ -24,11 +24,11 @@ jQuery(function () {
   // Event on keyup in the search field
   $("#search-input").keyup(function () {
     var t = $(this);
-    t.next('span').toggle(Boolean(t.val()));
+    $(".search-results").toggle(Boolean(t.val()));
     search();
   });
 
-  $("#search-clear").hide($(this).prev('input').val());
+  $(".search-results").hide($(this).prev('input').val());
 
   $("#search-clear").click(function () {
     $(this).prev('input').val('').focus();
@@ -48,7 +48,7 @@ jQuery(function () {
   }
 
   function display_search_results(results) {
-    var $search_results = $("#search-results");
+    var $search_results = $("div#search-results");
 
     // Wait for data to load
     window.data.then(function (loaded_data) {
