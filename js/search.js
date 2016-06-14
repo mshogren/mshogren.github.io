@@ -33,7 +33,8 @@ jQuery(function () {
 
   $("#search-clear").click(function () {
     $(this).prev('input').val('').focus();
-    $(this).hide();
+    $(".search-results").hide();
+    $(".main-content").show();
   });
 
   // Event when the form is submitted
