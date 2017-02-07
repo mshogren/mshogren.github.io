@@ -1,4 +1,4 @@
-[![Build Status](https://snap-ci.com/mshogren/mshogren.github.io/branch/master/build_image)](https://snap-ci.com/mshogren/mshogren.github.io/branch/master)
+[![Build Status](https://travis-ci.org/mshogren/mshogren.github.io.svg?branch=master)](https://travis-ci.org/mshogren/mshogren.github.io)
 
 My blog written using [Jekyll](http://jekyllrb.com)
 
