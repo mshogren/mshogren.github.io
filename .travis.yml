@@ -1,5 +1,9 @@
 dist: trusty
 sudo: false
+addons:
+  apt:
+    packages:
+    - libcurl
 language: ruby
 cache: bundler
 rvm:
