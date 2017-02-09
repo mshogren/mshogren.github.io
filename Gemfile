@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem 'activesupport', '4.2.7'
+gem "rake", group: :test
 gem "github-pages", group: :jekyll_plugins
 gem "jekyll-feed"  
 gem "html-proofer"
