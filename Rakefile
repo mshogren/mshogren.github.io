@@ -4,6 +4,6 @@ task :build do
   sh "bundle exec jekyll build"
 end
 
-task :test => ':build' do 
-	HTML::Proofer.new("./_site", {:disable_external => true, :check_html => true}).run
+task :test do 
+  HTML::Proofer.new("./_site", {:allow_hash_href => true, :check_html => true, :check_external_hash => true}).run
 end
