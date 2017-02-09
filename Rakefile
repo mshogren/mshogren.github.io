@@ -7,5 +7,5 @@ task :build do
 end
 
 task :test do 
-  HTMLProofer.check_directory("./_site", {:allow_hash_href => true, :check_html => true, :check_external_hash => true}).run
+  HTMLProofer.check_directory("./_site", {:allow_hash_href => true, :check_html => true, :check_external_hash => true, :typheous => {:timeout => 10}}).run
 end
