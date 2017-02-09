@@ -9,6 +9,6 @@ before_install:
   - sudo apt-get update -q
   - sudo apt-get install curl libcurl3 libcurl3-gnutls libcurl4-openssl-dev python-pycurl -y
 script: 
-  - bundle exec jekyll build
+  - rake build
   - bundle exec htmlproofer ./_site --allow-hash-href true --check-html true --check-external-hash true
   - curl --silent --show-error https://validator.w3.org/feed/check.cgi?url=https%3A%2F%2Fwww.michael-shogren.com | grep -q '\[Valid Atom'
