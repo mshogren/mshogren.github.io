@@ -1,3 +1,5 @@
+require 'html/proofer'
+
 task :default => [:build]
 
 task :build do
