@@ -3,12 +3,12 @@ sudo: required
 language: ruby
 cache: bundler
 rvm:
-  - 2.2
+  - 2.3
 before_install:
   - sudo apt-add-repository ppa:mnordhoff/curl-backport -y
   - sudo apt-get update -q
   - sudo apt-get install curl libcurl3 libcurl3-gnutls libcurl4-openssl-dev python-pycurl -y
 script: 
-  - bundle exec jekyll build
-  - bundle exec htmlproofer ./_site --allow-hash-href true --check-html true --check-external-hash true
-  - curl --silent --show-error https://validator.w3.org/feed/check.cgi?url=https%3A%2F%2Fwww.michael-shogren.com | grep -q '\[Valid Atom'
+  - bundle exec rake build
+  - bundle exec rake test
+  - curl --silent --show-error https://validator.w3.org/feed/check.cgi?url=https%3A%2F%2Fwww.michael-shogren.com 2>&1 | grep -q '\[Valid Atom'
