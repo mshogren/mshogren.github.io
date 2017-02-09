@@ -9,6 +9,6 @@ before_install:
   - sudo apt-get update -q
   - sudo apt-get install curl libcurl3 libcurl3-gnutls libcurl4-openssl-dev python-pycurl -y
 script: 
-  - rake build
-  - rake test
+  - bundle exec rake build
+  - bundle exec rake test
   - curl --silent --show-error https://validator.w3.org/feed/check.cgi?url=https%3A%2F%2Fwww.michael-shogren.com 2>&1 | grep -q '\[Valid Atom'
