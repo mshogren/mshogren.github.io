@@ -13,7 +13,7 @@ This is the fourth part in a series of posts about building a prototype for the 
 - [Part 6 - Extending the prototype](/2016/03/08/creating-a-mean-prototype-6.html)
 
 In the previous posts in this series I discussed the some of the reasons for building a prototype, and introduced the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)).
-I covered what I found when I tried to follow [this guide](http://docs.stormpath.com/angularjs/guide/) to build a MEAN prototype that is integrated with the [StormPath](https://stormpath.com) user management service I have decided to use, but there were some tweaks I needed to make along the way, especially in order to get the tests working.
+I covered what I found when I tried to follow this guide to build a MEAN prototype that is integrated with the [StormPath](https://stormpath.com) user management service I have decided to use, but there were some tweaks I needed to make along the way, especially in order to get the tests working.
 <!--excerpt.start-->
 Once the tests were working I decided to build a continuous deployment pipeline in Snap-CI which you can view ~~here~~ (**Edit**:  This build was moved to [Travis-CI](https://travis-ci.org) when Snap-CI shutdown.  Now you can view it [here](https://travis-ci.org/mshogren/alsl-sandbox1)).  The first stages run the `npm install` and `bower install` commands to get dependencies and then various grunt tasks to run tests and build (minify, etc) the project.
 <!--excerpt.end-->
