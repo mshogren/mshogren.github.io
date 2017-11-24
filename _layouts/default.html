@@ -7,9 +7,10 @@
     <title>{{ page.title }}</title>
     
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="preload" href="/css/style.css" as="style" onload="this.rel='stylesheet'">
 
     {% capture styles %}
-    {% include style.scss %}
+    {% include critical.scss %}
     {% include main.scss %}
     {% include syntax.scss %}
     {% endcapture %}
