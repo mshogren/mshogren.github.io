@@ -9,37 +9,12 @@
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/syntax.css">
     
-    <style>     
-        body { 
-          padding-top: 70px; 
-        }
-
-        img { 
-          max-width: 100%;
-          height: auto;
-          display: block;
-        }
-
-        #search-form {
-          width: 385px; 
-          float: left; 
-          padding-top: 8px;
-          left: -65px;
-        }
-
-        @media (max-width: 767px) {
-          #search-form {
-            width: 50%;
-            left: -85px;
-          }
-        }
-
-        #search-clear {
-          pointer-events: unset;
-        }
-    </style>
+    {% capture styles %}
+    {% include main.scss %}
+    {% include syntax.scss %}
+    {% endcapture %}
+    <style>{{ styles | scssify }}</style>
 
     {% feed_meta %}
 </head>
