@@ -28,7 +28,8 @@ jQuery(function () {
     $(".main-content").toggle(!Boolean(t.val()));
     search();
   });
-
+  
+  $("#search-input").after('<span id="search-clear" class="glyphicon glyphicon-remove form-control-feedback search-results"></span>');
   $(".search-results").hide($(this).prev('input').val());
 
   $("#search-clear").click(function () {
