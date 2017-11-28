@@ -1,6 +1,27 @@
-jQuery(function () {
+// Initialize lunr with the fields to be searched, plus the boost.
+window.data = new Promise(function(resolve, reject) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '/search_data.json');
 
-  // Initialize lunr with the fields to be searched, plus the boost.
+  xhr.onload = function() {
+    if (xhr.status == 200) {
+      resolve(JSON.parse(xhr.response));
+    } else {
+      reject(Error(xhr.statusText));
+    }
+  };
+
+  xhr.onerror = function() {
+    reject(Error("Network Error"));
+  };
+
+  xhr.send();
+});
+
+var script = document.createElement("script");
+script.type = "text/javascript";
+script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lunr.js/0.7.1/lunr.min.js';
+script.onload = function(){
   window.idx = lunr(function () {
     this.field('id');
     this.field('title', { boost: 10 });
@@ -9,73 +30,96 @@ jQuery(function () {
     this.field('categories');
   });
 
-  // Get the generated search_data.json file so lunr.js can search it locally.
-  window.data = $.getJSON('/search_data.json');
+  window.data.then(function(loaded_data) {
+    Object.keys(loaded_data).forEach(function(key) {
+      window.idx.add(Object.assign({ id: key }, loaded_data[key]));
+    });
+  });
+};
 
-  // Wait for the data to load and add it to lunr
+document.body.appendChild(script);
+
+function display_search_results(results) {
+  var searchResults = document.querySelector("div.search-results");
+
+  // Wait for data to load
   window.data.then(function (loaded_data) {
-    $.each(loaded_data, function (index, value) {
-      window.idx.add(
-        $.extend({ "id": index }, value)
-      );
-    });
+
+    // Are there any results?
+    if (results.length) {
+      searchResults.innerHTML = ''; // Clear any old results
+
+      // Iterate over the results
+      results.forEach(function (result) {
+        var item = loaded_data[result.ref];
+
+        // Build a snippet of HTML for this result
+        var heading = document.createElement('h4');
+        var link = document.createElement('a');
+        link.setAttribute('href', item.url);
+        link.append(item.title);
+        heading.appendChild(link);
+        searchResults.appendChild(heading);
+	
+        var text = document.createElement('p');
+        text.append(item.excerpt);
+        searchResults.appendChild(text);
+
+        var comments = document.createElement('a');
+        comments.setAttribute('href', item.url + '#disqus_thread');
+        searchResults.appendChild(comments);
+      });
+
+      DISQUSWIDGETS.getCount({ reset: true });
+    } else {
+      // If there are no results, let the user know.
+      searchResults.innerHtml = '<li>No results found.<br/>Please check spelling, spacing, yada...</li>';
+    }
   });
+}
 
-  // Event on keyup in the search field
-  $("#search-input").keyup(function () {
-    var t = $(this);
-    $(".search-results").toggle(Boolean(t.val()));
-    $(".main-content").toggle(!Boolean(t.val()));
-    search();
+function search() {
+  var query = searchInput.value;
+  var results = window.idx.search(query);
+  display_search_results(results);
+}
+
+var searchInput = document.querySelector("#search-input");
+
+var searchClear = document.createElement("span");
+searchClear.id = 'search-clear';
+searchClear.setAttribute('class', 'glyphicon glyphicon-remove form-control-feedback search-results');
+
+searchInput.parentElement.appendChild(searchClear);
+
+document.querySelectorAll(".search-results").forEach(function (element) {
+  element.style.display = 'none';
+});
+
+searchInput.addEventListener('keyup', function () {
+  var t = Boolean(searchInput.value);
+  document.querySelectorAll(".search-results").forEach(function (element) {
+    element.style.display = t ? '' : 'none';
   });
-  
-  $("#search-input").after('<span id="search-clear" class="glyphicon glyphicon-remove form-control-feedback search-results"></span>');
-  $(".search-results").hide($(this).prev('input').val());
-
-  $("#search-clear").click(function () {
-    $(this).prev('input').val('').focus();
-    $(".search-results").hide();
-    $(".main-content").show();
+  document.querySelectorAll(".main-content").forEach(function (element) {
+    element.style.display = !t ? '' : 'none';
   });
+  search();
+});
 
-  // Event when the form is submitted
-  $("#search-form").submit(function (event) {
-    event.preventDefault();
-    search();
+document.querySelector('#search-clear').addEventListener('click', function () {
+  var input = document.querySelector('#search-clear').previousElementSibling;
+  input.value = '';
+  input.focus();
+  document.querySelectorAll(".search-results").forEach(function (element) {
+    element.style.display = 'none';
   });
+  document.querySelectorAll(".main-content").forEach(function (element) {
+    element.style.display = '';
+  }); 
+});
 
-  function search() {
-    var query = $("#search-input").val(); // Get the value for the text field
-    var results = window.idx.search(query); // Get lunr to perform a search
-    display_search_results(results); // Hand the results off to be displayed
-  }
-
-  function display_search_results(results) {
-    var $search_results = $("div.search-results");
-
-    // Wait for data to load
-    window.data.then(function (loaded_data) {
-
-      // Are there any results?
-      if (results.length) {
-        $search_results.empty(); // Clear any old results
-
-        // Iterate over the results
-        results.forEach(function (result) {
-          var item = loaded_data[result.ref];
-
-          // Build a snippet of HTML for this result
-          var appendString = '<h4><a href="' + item.url + '">' + item.title + '</a></h4><p>' + item.excerpt + '</p><a href="' + item.url + '#disqus_thread"></a>';
-
-          // Add the snippet to the collection of results.
-          $search_results.append(appendString);
-        });
-
-        DISQUSWIDGETS.getCount({ reset: true });
-      } else {
-        // If there are no results, let the user know.
-        $search_results.html('<li>No results found.<br/>Please check spelling, spacing, yada...</li>');
-      }
-    });
-  }
+document.querySelector("#search-form").addEventListener('submit', function (event) {
+  event.preventDefault();
+  search();
 });
