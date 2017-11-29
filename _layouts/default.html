@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{ page.title }}</title>
-    
+
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
     <link rel="preload" href="/css/style.css" as="style" onload="this.rel='stylesheet'">
 
@@ -17,72 +17,72 @@
     <style>{{ styles | scssify }}</style>
 
     {% feed_meta %}
-</head>
+  </head>
 
-<body>
+  <body>
     <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">Home</a>
-                <form action="get" id="search-form" role="search">
-                    <div class="form-group has-feedback">
-                        <label for="search-input" class="sr-only">Search</label>
-                        <input id="search-input" type="text" class="form-control" placeholder="Search">
-                    </div>
-                </form>
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                                                                                       aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Home</a>
+          <form action="get" id="search-form" role="search">
+            <div class="form-group has-feedback">
+              <label for="search-input" class="sr-only">Search</label>
+              <input id="search-input" type="text" class="form-control" placeholder="Search">
             </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ALSL Links <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a target="_blank" rel="noopener" href="https://waffle.io/mshogren/mshogren.github.io">ALSL Task Board</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li class="dropdown-header">Source Repositories</li>
-                            <li><a target="_blank" rel="noopener" href="https://github.com/mshogren/mshogren.github.io">This blog</a></li>
-                            <li><a target="_blank" rel="noopener" href="https://github.com/mshogren/alsl-infrastructure">Infrastructure provisioning tools</a></li>
-                            <li><a target="_blank" rel="noopener" href="https://github.com/mshogren/alsl-sandbox1">A MEAN prototype</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li class="dropdown-header">Continuous Integration Builds</li>
-                            <li><a target="_blank" rel="noopener" href="https://travis-ci.org/mshogren/mshogren.github.io">This blog</a></li>
-                            <li><a target="_blank" rel="noopener" href="https://travis-ci.org/mshogren/alsl-sandbox1">A MEAN prototype</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li class="dropdown-header">Deployed Applications</li>
-                            <li><a target="_blank" rel="noopener" href="https://alsl-sandbox1.michael-shogren.com">A MEAN prototype</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+          </form>
         </div>
-        <!-- /.container-fluid -->
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ALSL Links <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a target="_blank" rel="noopener" href="https://waffle.io/mshogren/mshogren.github.io">ALSL Task Board</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Source Repositories</li>
+                <li><a target="_blank" rel="noopener" href="https://github.com/mshogren/mshogren.github.io">This blog</a></li>
+                <li><a target="_blank" rel="noopener" href="https://github.com/mshogren/alsl-infrastructure">Infrastructure provisioning tools</a></li>
+                <li><a target="_blank" rel="noopener" href="https://github.com/mshogren/alsl-sandbox1">A MEAN prototype</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Continuous Integration Builds</li>
+                <li><a target="_blank" rel="noopener" href="https://travis-ci.org/mshogren/mshogren.github.io">This blog</a></li>
+                <li><a target="_blank" rel="noopener" href="https://travis-ci.org/mshogren/alsl-sandbox1">A MEAN prototype</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Deployed Applications</li>
+                <li><a target="_blank" rel="noopener" href="https://alsl-sandbox1.michael-shogren.com">A MEAN prototype</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
     </nav>
 
     <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 search-results">
-            </div>
-            {{ content }}
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 search-results">
         </div>
+        {{ content }}
+      </div>
     </div>
     <!-- /.container -->
-    
+
     <script async src="https://cdn.jsdelivr.net/npm/bootstrap.native@2.0.15/dist/bootstrap-native.min.js"></script>
     <script async src="/js/search.js"></script>
     {% include analytics.html %}
     <script async id="dsq-count-scr" src="//mshogren.disqus.com/count.js"></script>
-</body>
+  </body>
 
 </html>
