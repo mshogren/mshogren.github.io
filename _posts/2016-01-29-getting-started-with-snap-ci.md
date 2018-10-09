@@ -5,7 +5,7 @@ date: 2016-01-29
 ---
 In the [last post](/2016/01/28/continuous-integration.html) I outlined my decision to use [Snap CI](https://snap-ci.com) as my CI tool.  I want to test my blog for broken links, well-formed HTML, valid Atom feed and possibly other things in the future.  I want these tests to be automated so I can't forget or be too lazy to run them and I want the failing of these tests to prevent changes to my blog from being published.
 
-I created a Snap-CI account and I have added a link to the builds for my blog to the **_ALSL Links_** navigation.  Snap-CI automatically links to your Github account, and it allowed me to setup my first build of the blog repo in no time using Ruby 2.1.5.  I followed this [guide](http://jekyllrb.com/docs/continuous-integration/) and created my [`Gemfile`](https://github.com/mshogren/mshogren.github.io/blob/master/Gemfile) as suggested [here](https://help.github.com/articles/using-jekyll-with-pages/).
+I created a Snap-CI account and I have added a link to the builds for my blog to the **_ALSL Links_** navigation.  Snap-CI automatically links to your Github account, and it allowed me to setup my first build of the blog repo in no time using Ruby 2.1.5.  I followed this [guide](https://jekyllrb.com/docs/continuous-integration/travis-ci/) and created my [`Gemfile`](https://github.com/mshogren/mshogren.github.io/blob/master/Gemfile) as suggested [here](https://help.github.com/articles/using-jekyll-with-pages/).
 
 The commands I added to my build definition were as follows:
 
