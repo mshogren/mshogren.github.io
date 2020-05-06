@@ -24,7 +24,7 @@ My first requirement is a cheap hosted solution, and each of these is capable of
 
 Travis is very popular and there are a couple of things I like about it.  The most important thing is that your build definition is stored in source control as a `.travis.yml` file.  This agrees with the first goal I have above on my journey towards CD.  Another thing I like about it is the fact that it covers the most programming languages of any of the CI tools I have seen, and the documentation for customizing the build environment is excellent.  The containers Travis uses for builds are built using [Ubuntu](http://www.ubuntu.com), a [Debian](https://www.debian.org) derived distribution I am very familiar with.
 
-There is one thing missing from Travis that a really like about Snap-CI which is why I am going to try working with Snap-CI for now.  That is The focus on build pipelines.  The pipeline is defined by [Jez Humble](http://jezhumble.net) in his book [Continuous Delivery](https://www.amazon.com/Continuous-Delivery-Deployment-Automation-Addison-Wesley-dp-0321601912/dp/0321601912) as:
+There is one thing missing from Travis that a really like about Snap-CI which is why I am going to try working with Snap-CI for now.  That is The focus on build pipelines.  The pipeline is defined by [Jez Humble](http://jezhumble.net) in his book [Continuous Delivery](https://www.amazon.com/dp/0321601912?tag=contindelive-20) as:
 
 > At an abstract level, a deployment pipeline is an automated manifestation of your process for getting software from version control into the hands of your users.
 
