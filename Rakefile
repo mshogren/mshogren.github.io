@@ -1,6 +1,6 @@
 require 'html-proofer'
 
-task :default => [:build]
+task :default => [:build, :test]
 
 task :build do
   sh "bundle exec jekyll build"
