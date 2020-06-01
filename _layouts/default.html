@@ -4,13 +4,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="Description" content="Michael Shogren's blog.">
     <title>{{ page.title }}</title>
 
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
-    <link rel="preload" href="/css/style.css" as="style" onload="this.rel='stylesheet'">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://www.google-analytics.com">
 
     {% capture styles %}
-    {% include critical.scss %}
+    {% include bootstrap.scss %}
     {% include main.scss %}
     {% include syntax.scss %}
     {% endcapture %}
@@ -79,11 +81,10 @@
     </div>
     <!-- /.container -->
 
-    <script async src="https://cdn.jsdelivr.net/npm/bootstrap.native@2.0.15/dist/bootstrap-native.min.js"></script>
+    <script async src="/js/bs-components.min.js"></script>
     <script async src="/js/search.js"></script>
     {% include swipe.html %}
     {% include analytics.html %}
-    <script async id="dsq-count-scr" src="//mshogren.disqus.com/count.js"></script>
   </body>
 
 </html>

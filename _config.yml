@@ -1,15 +1,16 @@
 name: Michael Shogren's Blog
+title: Michael Shogren's Blog
 url: https://www.michael-shogren.com
 author: Michael Shogren
-markdown: kramdown
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
-paginate: 2
+markdown: GFM
+highlighter: rouge
+excerpt_separator: <!--more-->
+paginate: 4
 paginate_path: "/page:num/"
+staticman_url: https://mshogren-staticman.herokuapp.com/v2/entry/mshogren/mshogren.github.io/master/comments
 sass:
   style: compressed
-gems:
+plugins:
   - jekyll-paginate
   - jekyll-feed
   - jekyll-sitemap

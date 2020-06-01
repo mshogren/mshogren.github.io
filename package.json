@@ -1,0 +1,22 @@
+{
+  "name": "mshogren.github.io",
+  "version": "1.0.0",
+  "description": "[![Build Status](https://travis-ci.org/mshogren/mshogren.github.io.svg?branch=master)](https://travis-ci.org/mshogren/mshogren.github.io)",
+  "main": "index.js",
+  "scripts": {
+    "build": "node node_modules/bootstrap.native/lib/build.js -v 3 -m -o collapse dropdown > js/bs-components.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mshogren/mshogren.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mshogren/mshogren.github.io/issues"
+  },
+  "homepage": "https://github.com/mshogren/mshogren.github.io#readme",
+  "dependencies": {
+    "bootstrap.native": "^2.0.27"
+  }
+}

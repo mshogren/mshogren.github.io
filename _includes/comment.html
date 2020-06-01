@@ -1,0 +1,27 @@
+<div class="comment{% unless include.parent == include.id %} reply{% endunless %}">
+  <article id="comment{{ id | prepend: '-' }}">
+    <a href="#comment{{ include.id | prepend: '-' }}" title="Permalink to this comment">
+      <strong>{{ include.name | strip_html }}</strong> commented at <time datetime="{{ include.date | date_to_xmlschema }}">{{ include.date | date_to_rfc822 }}</time>
+    </a>
+    <div class="comment-message">
+      {{ include.message | markdownify }}
+    </div>
+    {% unless page.comments_locked == true %}
+      <div class="comment-reply">
+        <a href="#comment-{{ include.id }}" onclick="moveCommentForm('{{ include.id }}')">
+          &#x2BA9; Reply to {{ include.name }}</a>
+      </div>
+    {% endunless %}
+  </article>
+
+  {% capture i %}{{ include.id }}{% endcapture %}
+  {%- assign replies = site.data.comments[page.slug] | sort | where_exp: 'comment', 'comment[1]._id != i' | where_exp: 'comment', 'comment[1]._parent == i' -%}
+  {%- for reply in replies -%}
+    {%- assign id          = reply[1]._id -%}
+    {%- assign parent      = reply[1]._parent -%}
+    {%- assign name        = reply[1].name -%}
+    {%- assign date        = reply[1].date -%}
+    {%- assign message     = reply[1].message -%}
+    {%- include comment.html id=id parent=parent name=name date=date message=message -%}
+  {%- endfor -%}
+</div>

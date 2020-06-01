@@ -7,14 +7,23 @@ title: Michael Shogren's Blog
 
 <!-- This loops through the paginated posts -->
 {% for post in paginator.posts %}
-  <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
-  <p class="author">
-    <span class="date">{{ post.date | date_to_long_string }}</span>
-  </p>
-  <div class="content">
-    {{ post.content }}
-  </div>
-  <a href="{{ post.url }}#disqus_thread"></a>
+  <article>
+    <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+    <p>
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_long_string }}</time>
+    </p>
+    <div class="content">
+      {% if post.content contains '<!--excerpt.start-->' and post.content contains '<!--excerpt.end-->' %}
+        <div class="excerpt">
+          {{ post.content | split:'<!--excerpt.start-->' | last | split: '<!--excerpt.end-->' | first }}
+        </div>
+        <p><a href="{{ post.url }}">Read more</a></p>
+      {% else %}
+        {{ post.excerpt }}
+      {% endif %}
+      <p><a href="{{ post.url }}#comments">{{ site.data.comments[post.slug] | size | append: ' Comments' }}</a></p>
+    </div>
+  </article>
 {% endfor %}
 
   <!-- Pagination links -->
@@ -31,12 +40,26 @@ title: Michael Shogren's Blog
 </div>
 <div class="col-xs-12 col-sm-4">
   <div>
-    <h3>Recent Posts</h3>
-    {% for post in site.posts offset: 0 limit: 3  %}
+    <h3>Popular Posts</h3>
+    {% capture scoredids %}
+      {% for post in site.posts %}
+        {{ site.data.comments[post.slug] | size | plus: 1000 }}#{{ post.id }}
+      {% endfor %}
+    {% endcapture %}
+    {% assign sortedscoredids = scoredids | split:' ' | sort | reverse %}
+    {% for scoredid in sortedscoredids limit: 3  %}
+      {% assign id = scoredid | split: '#' | last %}
+      {% assign post = site.posts | where: "id", id | first %}
       <div>
         <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
-        <p>{% if post.content contains '<!--excerpt.start-->' and post.content contains '<!--excerpt.end-->' %}{{ post.content | split:'<!--excerpt.start-->' | last | split: '<!--excerpt.end-->' | first | strip_html | strip_newlines | remove:  "	" | escape | remove: "\" | truncatewords: 50 }}{% else %}{{ post.content | strip_html | strip_newlines | remove:  "	" | escape | remove: "\" | truncatewords: 50 }}{% endif %}</p>
-        <a href="{{ post.url }}#disqus_thread"></a>
+        <div class="excerpt"><p>
+          {% if post.content contains '<!--excerpt.start-->' and post.content contains '<!--excerpt.end-->' %}
+            {{ post.content | split:'<!--excerpt.start-->' | last | split: '<!--excerpt.end-->' | first | strip_html | strip_newlines | remove:  "	" | escape | remove: "\" | truncatewords: 75 }}
+          {% else %}
+            {{ post.content | strip_html | strip_newlines | remove:  "	" | escape | remove: "\" | truncatewords: 75 }}
+          {% endif %}
+        </p></div>
+        <a href="{{ post.url }}#comments">{{ site.data.comments[post.slug] | size | append: ' Comments' }}</a>
       </div>
     {% endfor %}
   </div>

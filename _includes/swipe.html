@@ -22,7 +22,7 @@ function swipedetect(el, callback){
     startY = touchobj.pageY
     startTime = new Date().getTime() // record time when finger first makes contact with surface
     //e.preventDefault()
-  }, false)
+  }, {passive: true})
 
   /*
   touchsurface.addEventListener('touchmove', function(e){
@@ -45,19 +45,29 @@ function swipedetect(el, callback){
     }
     handleswipe(swipedir)
     //e.preventDefault()
-  }, false)
+  }, {passive: true})
 }
 
 var el = document.querySelector('.container')
 swipedetect(el, function(swipedir){
-  {% if paginator.next_page %}
+  {%- if paginator.page -%}
+    {% if paginator.next_page %}
+    if (swipedir =='right')
+      location.assign('{{ paginator.next_page_path }}')
+    {%- endif -%}
+    {% if paginator.previous_page %}
+    if (swipedir =='left')
+      location.assign('{{ paginator.previous_page_path }}')
+    {%- endif -%}
+  {%- endif -%}
+  {% if page.next %}
   if (swipedir =='right')
-    location.assign('{{ paginator.next_page_path }}')
-  {% endif %}
-  {% if paginator.previous_page %}
+    location.assign('{{ page.next.path }}')
+  {%- endif -%}
+  {% if page.previous %}
   if (swipedir =='left')
-    location.assign('{{ paginator.previous_page_path }}')
-  {% endif %}
+    location.assign('{{ page.previous.path }}')
+  {%- endif -%}
 })
 </script>
 

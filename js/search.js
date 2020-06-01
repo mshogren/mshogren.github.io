@@ -20,21 +20,37 @@ window.data = new Promise(function (resolve, reject) {
 
 const script = document.createElement('script');
 script.type = 'text/javascript';
-script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lunr.js/0.7.1/lunr.min.js';
+script.src = 'https://cdn.jsdelivr.net/npm/lunr@0.7.1/lunr.min.js'; //,npm/bootstrap.native@2.0.15/dist/bootstrap-native.min.js';
 script.onload = function () {
-  window.idx = lunr(function () {
-    this.field('id');
-    this.field('title', { boost: 10 });
-    this.field('content');
-    this.field('author');
-    this.field('categories');
-  });
-
-  window.data.then(function (loadedData) {
-    Object.keys(loadedData).forEach(function (key) {
-      window.idx.add(Object.assign({ id: key }, loadedData[key]));
+  var index = JSON.parse(localStorage.getItem('searchIndex'));
+  if (index && index.expires > Date.now()) {
+    window.idx = lunr.Index.load(JSON.parse(index.data))
+  } else {
+    window.data.then(function (loadedData) {
+      if (window.Worker) {
+        var worker = new Worker("/js/worker.js");
+        worker.onmessage = function (e)
+        {
+          window.idx = lunr.Index.load(JSON.parse(e.data))
+          worker.terminate();
+          localStorage.setItem('searchIndex', JSON.stringify({expires: Date.now() + 300000, data: e.data}));
+        }
+        worker.postMessage(loadedData);
+      } else {
+        window.idx = lunr(function () {
+          this.field('id');
+          this.field('title', { boost: 10 });
+          this.field('content');
+          this.field('author');
+          this.field('categories');
+          this.field('comments');
+        });
+        Object.keys(loadedData).forEach(function (key) {
+          window.idx.add(Object.assign({ id: key }, loadedData[key]));
+        });
+      }
     });
-  });
+  }
 };
 
 document.body.appendChild(script);
@@ -65,11 +81,10 @@ function displaySearchResults(results) {
         searchResults.appendChild(text);
 
         const comments = document.createElement('a');
-        comments.setAttribute('href', item.url + '#disqus_thread');
+        comments.setAttribute('href', item.url + '#comments');
+        comments.append(item.commentcount + ' Comments');
         searchResults.appendChild(comments);
       });
-
-      DISQUSWIDGETS.getCount({ reset: true });
     } else {
       // If there are no results, let the user know.
       searchResults.innerHtml = '<li>No results found.<br/>Please check spelling, spacing, yada...</li>';
