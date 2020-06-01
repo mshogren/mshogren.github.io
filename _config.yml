@@ -1,6 +1,8 @@
 name: Michael Shogren's Blog
 title: Michael Shogren's Blog
-url: https://www.michael-shogren.com
+url: https://michael-shogren.com
+repository: "mshogren/mshogren.github.io"
+url: https://michael-shogren.com
 author: Michael Shogren
 markdown: GFM
 highlighter: rouge
