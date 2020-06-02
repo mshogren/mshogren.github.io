@@ -1,7 +1,7 @@
 <div class="comment{% unless include.parent == nil or include.parent == include.id %} reply{% endunless %}">
   <article id="comment{{ id | prepend: '-' }}">
     <a href="#comment{{ include.id | prepend: '-' }}" title="Permalink to this comment">
-      <strong>{{ include.name | strip_html }}</strong> commented at <time datetime="{{ include.date | date_to_xmlschema }}">{{ include.date | date_to_rfc822 }}</time>
+      {{ include.name | strip_html }} commented at <time datetime="{{ include.date | date_to_xmlschema }}">{{ include.date | date_to_rfc822 }}</time>
     </a>
     <div class="comment-message">
       {{ include.message | markdownify }}
@@ -9,7 +9,7 @@
     {% unless page.comments_locked == true %}
       <div class="comment-reply">
         <a href="#comment-{{ include.id }}" onclick="moveCommentForm('{{ include.id }}')">
-          &#x2BA9; Reply to {{ include.name }}</a>
+          &#x2939; Reply to {{ include.name }}</a>
       </div>
     {% endunless %}
   </article>
