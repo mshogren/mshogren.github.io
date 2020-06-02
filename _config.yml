@@ -7,7 +7,7 @@ author: Michael Shogren
 markdown: GFM
 highlighter: rouge
 excerpt_separator: <!--more-->
-paginate: 4
+paginate: 3
 paginate_path: "/page:num/"
 staticman_url: https://mshogren-staticman.herokuapp.com/v2/entry/mshogren/mshogren.github.io/master/comments
 sass:

@@ -10,13 +10,15 @@
         <label for="comment-form-name" class="sr-only">Name</label>
         <input type="text" id="comment-form-name" name="fields[name]" class="form-control" required spellcheck="false" placeholder="Name">
       </div>
+      <div class="form-group">
+        <button type="submit" id="comment-form-submit" class="btn btn-default">Submit Comment</button>
+      </div>
       <input type="hidden" name="options[origin]" value="{{ page.url | absolute_url }}#comments">
       <input type="hidden" id="comment-replying-to" name="options[parent]" value>
       <input type="hidden" id="comment-post-slug" name="options[slug]" value="{{ page.slug }}">
       <input type="hidden" name="options[reCaptcha][siteKey]" value="{{ site.reCaptcha.siteKey }}">
       <input type="hidden" name="options[reCaptcha][secret]" value="{{ site.reCaptcha.secret }}">
       <div class="g-recaptcha form__group" data-sitekey="{{ site.reCaptcha.siteKey }}"></div>
-      <button type="submit" id="comment-form-submit" class="btn btn-default">Submit Comment</button>
     </form>
   </div>
 {% else %}
@@ -28,14 +30,13 @@
 {% if site.data.comments[page.slug] %}
   <h3>Comments</h3>
   <div id="comments">
-    {%- assign comments = site.data.comments[page.slug] | sort | where_exp: 'comment', 'comment[1]._parent == comment[1]._id' -%}
+    {%- assign comments = site.data.comments[page.slug] | sort | where_exp: 'comment', 'comment[1]._parent == nil' -%}
     {%- for comment in comments -%}
       {%- assign id          = comment[1]._id -%}
-      {%- assign parent      = comment[1]._parent -%}
       {%- assign name        = comment[1].name -%}
       {%- assign date        = comment[1].date -%}
       {%- assign message     = comment[1].message -%}
-      {%- include comment.html id=id parent=parent name=name date=date message=message -%}
+      {%- include comment.html id=id name=name date=date message=message -%}
     {%- endfor -%}
   </div>
 {% endif %}
