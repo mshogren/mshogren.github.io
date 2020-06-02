@@ -16,14 +16,14 @@ In the previous posts in this series I discussed the some of the reasons for bui
 I covered what I found when I tried to follow this guide to build a MEAN prototype that is integrated with the [StormPath](https://stormpath.com) user management service I have decided to use, but there were some tweaks I needed to make along the way, especially in order to get the tests working.  In the [most recent post](/2016/02/22/creating-a-mean-prototype-4.html) I built a deployment pipeline for the prototype.
 <!--excerpt.start-->
 I thought this would be the final post in the series, where I finally got around to adding at least another form to the application.  As I was thinking about what need to be done I discovered that there was too much little stuff to be resolved, including the [technical debt](http://martinfowler.com/bliki/TechnicalDebt.html) incurred by using a yeoman generator.  I managed to clean up a lot of things working on this post which should make delivering new features to the deployed prototype faster in the future.
-<!--excerpt.end-->
+
 The first thing I did was configure social login from Facebook or Google using this as a guide.  Things worked relatively well, but I discovered a minor issue with the default [login page html template](https://github.com/stormpath/stormpath-sdk-angularjs/blob/master/src/spLoginForm.tpl.html) from the Stormpath Angular JS SDK, so I created and called my own modified template.  You can have a look at what I did in these two commits:
 
 - [Fixing social login html template](https://github.com/mshogren/alsl-sandbox1/commit/6c41a57cc72709c0f44881e2d2e0cf58ed48bdc8)
 - [Fix OAuth Scope requested for social login](https://github.com/mshogren/alsl-sandbox1/commit/f59c4b27ae075c232b52d728cf0c97c3d06f76f4)
 
 I am considering submitting a pull request to the Stormpath team to get this fixed.  While I was doing these changes I decided it would be easier to switch off the Grunt steps that minify the JavaScript and CSS, so I can use debugging tools even on the deployed application.  I did that by simply commenting out some lines in the [`Gruntfile.js`](https://github.com/mshogren/alsl-sandbox1/blob/master/Gruntfile.js).
-
+<!--excerpt.end-->
 Next I modified the registration process to accept a username field.  In my opinion it is a shame that the `sp-registration-form` directive doesn't produce a form that displays the fields based on the configuration.  I guess that is another potential pull request I could submit. Anyway, the change I made was done in these two commits:
 
 - [Add username to registration](https://github.com/mshogren/alsl-sandbox1/commit/b2bc55871c02ff688c5b9ad331a90725d3bb4b79)

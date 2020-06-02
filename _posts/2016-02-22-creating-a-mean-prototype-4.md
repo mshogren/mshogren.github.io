@@ -15,8 +15,8 @@ This is the fourth part in a series of posts about building a prototype for the 
 In the previous posts in this series I discussed the some of the reasons for building a prototype, and introduced the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)).
 I covered what I found when I tried to follow this guide to build a MEAN prototype that is integrated with the [StormPath](https://stormpath.com) user management service I have decided to use, but there were some tweaks I needed to make along the way, especially in order to get the tests working.
 <!--excerpt.start-->
-Once the tests were working I decided to build a continuous deployment pipeline in Snap-CI which you can view ~~here~~ (**Edit**:  This build was moved to [Travis-CI](https://travis-ci.org) when Snap-CI shutdown.  Now [this is where you can view](https://travis-ci.org/mshogren/alsl-sandbox1)) it.  The first stages run the `npm install` and `bower install` commands to get dependencies and then various grunt tasks to run tests and build (minify, etc) the project.
-<!--excerpt.end-->
+Once the tests were working I decided to build a continuous deployment pipeline in Snap-CI which you can view ~~here~~ (**Edit**:  This build was moved to [Travis-CI](https://travis-ci.org) when Snap-CI shutdown.  Now [this is where you can view](https://travis-ci.org/mshogren/alsl-sandbox1) it.  The first stages run the `npm install` and `bower install` commands to get dependencies and then various grunt tasks to run tests and build (minify, etc) the project.
+
 The last step runs `grunt buildcontrol` which uses configuration from the [Gruntfile.js](https://github.com/mshogren/alsl-sandbox1/blob/master/Gruntfile.js) to deploy the built project to a new **deploy** branch of my repo.  The configuration I used in my `Gruntfile.js` is:
 
 ``` javascript
@@ -38,7 +38,7 @@ buildcontrol: {
 ```
 
 You can find out more about this task [here](http://yeoman.io/learning/deployment.html).
-
+<!--excerpt.end-->
 At this time I decided I would make use of [Azure App Service free tier](https://azure.microsoft.com/en-us/pricing/details/app-service/) web app hosting for this prototype, and I realized I would also need to use <a href="https://mongolab.com" data-proofer-ignore>mongolab</a> database hosting.  Unfortunately I was unable to script provisioning a database, but I provisioned an instance in Azure's West US region and was given a URI to access this database.  The webapp built by yeoman will use this URI if I supply it to an environment variable called MONGOLAB_URI, which you can see by looking at the configuration of the webapp at [server/config/environment/production.js](https://github.com/mshogren/alsl-sandbox1/blob/master/server/config/environment/production.js).
 
 I was also unable to figure out exactly how to configure my azure website from the command line.  Some of it, like creating an App Service Plan in the free tier and creating a website I could figure out.  I was also able to figure out how to set environment variables for the application.  On the other hand, I was unable to figure out how to specify the git branch to deploy from as you can when setting things up through the Azure Portal like <a href="https://azure.microsoft.com/en-us/documentation/articles/web-sites-publish-source-control/#Step7" data-proofer-ignore>this</a>.  I will have to do some more research into the Azure command line tools to see if I can achieve what I would like in the future.
